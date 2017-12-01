@@ -80,6 +80,9 @@ class Node {
     std::string toInfix() const{ return toString(); }
     std::string toPrefix() const{ return toString(PREFIX); }
     std::string toPostfix() const{ return toString(POSTFIX); }
+    int eval() const;
+    int evalLeft() const;
+    int evalRight() const;
 };
 
 #endif //NODE_H

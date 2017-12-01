@@ -28,3 +28,9 @@ std::string Expression::postfixString() const{
         return tree->toPostfix();
     return "No Tree!";
 }
+
+int Expression::evaluate() const{
+    if(tree != 0)
+        return tree->eval();
+    throw "No Tree!"; 
+}

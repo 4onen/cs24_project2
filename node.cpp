@@ -196,3 +196,62 @@ std::string Node::toString(fixEnum fixing) const{
     }
     return "IMPOSSIBLE_STATE";
 }
+
+int Node::eval() const{
+    int left=evalLeft();
+    int right=evalRight();
+
+    switch(operation){
+        case Op::ADDITION:
+            return left+right;
+            break;
+        case Op::SUBTRACTION:
+            return left-right;
+            break;
+        case Op::MULTIPLICATION:
+            return left*right;
+            break;
+        case Op::DIVISION:
+            return left/right;
+            break;
+        case Op::NONE:
+            throw "Non-operating expression encountered!";
+            break;
+    }
+    throw "This literally can't happen! Strongly typed enums have broken in C++ in Node::eval()";
+}
+
+int Node::evalLeft() const{
+    switch(leftType){
+        case anExpression:
+            return left->eval();
+            break;
+        case aVariable:
+            throw "HEY! You haven't given me a value for variables like 'x'!";
+            break;
+        case aConstant:
+            return leftConstant;
+            break;
+        case aNothing:
+            throw "Encountered Not a Number on left side of an expression!";
+            break;
+    }
+}
+
+int Node::evalRight() const{
+    switch(rightType){
+        case anExpression:
+            return right->eval();
+            break;
+        case aVariable:
+            throw "HEY! You haven't given me a value for variables like 'x'!";
+            break;
+        case aConstant:
+            return rightConstant;
+            break;
+        case aNothing:
+            throw "Encountered Not-a-Number on right side of an expression!";
+            break;
+    }
+}
+

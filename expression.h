@@ -16,6 +16,7 @@ class Expression{
         std::string infixString() const;
         std::string prefixString() const;
         std::string postfixString() const;
+        int evaluate() const;
     private:
         Node* tree;
 };
