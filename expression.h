@@ -17,6 +17,7 @@ class Expression{
         std::string prefixString() const;
         std::string postfixString() const;
         int evaluate() const;
+        char compare(const Expression &other) const;
     private:
         Node* tree;
 };

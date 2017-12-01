@@ -34,3 +34,11 @@ int Expression::evaluate() const{
         return tree->eval();
     throw "No Tree!"; 
 }
+
+char Expression::compare(const Expression &other) const{
+    int me = evaluate();
+    int them = other.evaluate();
+    if(me>them) return '>';
+    if(them>me) return '<';
+    return '=';
+}
