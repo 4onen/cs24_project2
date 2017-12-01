@@ -7,21 +7,29 @@
 #include <string>
 #include <iostream>
 
-
+using namespace std;
 
 int main(int argc, char* argv[]){
-    std::string input = argsToString(argc, argv);
-
-    if(input.length()<1){
-        std::cout<<"No input found!"<<std::endl;
-        std::cout<<"Usage: "<<argv[0]<<" [parenthesized infix expression]"<<std::endl;
-        return 0;
-    }else{
-        std::cout<<"You entered: "<<input<<std::endl;
+    while(true){
+        string input;
+        cout<<"1. Expression Evaluation, 2. Expression Comparison"<<endl;
+        getline(cin, input);
+        if(input.length()<1) break;
+        if(input.length()>1){ cout<<"Expecting a single number!"
+            <<endl<<"Empty expression to exit."<<endl;
+            continue;
+        }
+        if(input=="1"){ cout<<"Do the 1 thing."<<endl; }
+        else if(input=="2"){ cout<<"Do the 2 thing.2."<<endl; }
+        else{
+            cout<<"Yeah that made no sense to me. 1 or 2, please!"<<endl
+                <<"Empty selection to exit."<<endl;
+        }
     }
+    return 0;
+}
 
-    Expression exp(input);
-
+/* Useful cruft from the last project
     if(exp.infixString()=="No Tree!"){
         int n = parenCheck(input);
         if(n>0){
@@ -37,21 +45,4 @@ int main(int argc, char* argv[]){
         std::cout<<"Prefix: "<<exp.prefixString()<<std::endl;
         std::cout<<"Postfix: "<<exp.postfixString()<<std::endl;
     }
-
-    return 0;
-}
-
-
-
-std::string argsToString(int argc, char* argv[]){
-    std::string ret = "";
-    for(int i=1;i<argc;i++){
-        ret.append(argv[i]);
-        ret+=" ";
-    }
-    return ret;
-}
-
-std::string nSpaces(int n){
-    return std::string(n,'.');
-}
+*/
