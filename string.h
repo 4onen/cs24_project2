@@ -10,4 +10,6 @@
 
 int main(int argc, char* argv[]);
 
+std::string getExpr(std::string prompt);
+
 #endif //STRING_H
